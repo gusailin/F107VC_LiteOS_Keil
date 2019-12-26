@@ -297,6 +297,12 @@ err_t sys_mbox_trypost(struct sys_mbox **mb, void *msg)
     return ERR_OK;
 }
 
+err_t sys_mbox_trypost_fromisr(sys_mbox_t *mbox, void *msg)
+{
+  
+  return ERR_OK;
+}
+
 u32_t sys_arch_mbox_fetch_ext(struct sys_mbox **mb, void **msg, u32_t timeout,
                               u8_t ignore_timeout)
 {
@@ -466,7 +472,7 @@ u32_t sys_now(void)
                    LOSCFG_BASE_CORE_TICK_PER_SECOND);
 }
 
-sys_thread_t sys_thread_new(char *name, lwip_thread_fn function, void *arg,
+sys_thread_t sys_thread_new(const char *name, lwip_thread_fn function, void *arg,
                             int stacksize, int prio)
 {
     TSK_INIT_PARAM_S task;

@@ -51,21 +51,21 @@
 #endif /* __GNUC__ */
 /* USER CODE END 0 */
 
-UART_HandleTypeDef huart1;
+UART_HandleTypeDef huart4;
 
 /* USART1 init function */
 
-void MX_USART1_UART_Init(void)
+void MX_USART4_UART_Init(void)
 {
-  huart1.Instance = USART1;
-  huart1.Init.BaudRate = 115200;
-  huart1.Init.WordLength = UART_WORDLENGTH_8B;
-  huart1.Init.StopBits = UART_STOPBITS_1;
-  huart1.Init.Parity = UART_PARITY_NONE;
-  huart1.Init.Mode = UART_MODE_TX_RX;
-  huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
-  huart1.Init.OverSampling = UART_OVERSAMPLING_16;
-  if (HAL_UART_Init(&huart1) != HAL_OK)
+  huart4.Instance = UART4;
+  huart4.Init.BaudRate = 115200;
+  huart4.Init.WordLength = UART_WORDLENGTH_8B;
+  huart4.Init.StopBits = UART_STOPBITS_1;
+  huart4.Init.Parity = UART_PARITY_NONE;
+  huart4.Init.Mode = UART_MODE_TX_RX;
+  huart4.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  huart4.Init.OverSampling = UART_OVERSAMPLING_16;
+  if (HAL_UART_Init(&huart4) != HAL_OK)
   {
     _Error_Handler(__FILE__, __LINE__);
   }
@@ -77,17 +77,17 @@ void MX_USART1_UART_Init(void)
 * @param huart: UART handle pointer
 * @retval None
 */
-void HAL_UART_MspInit(UART_HandleTypeDef* huart)
+void HAL_UART_MspInit(UART_HandleTypeDef *huart)
 {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
-  if(huart->Instance==UART4)
+  if (huart->Instance == UART4)
   {
-  /* USER CODE BEGIN UART4_MspInit 0 */
+    /* USER CODE BEGIN UART4_MspInit 0 */
 
-  /* USER CODE END UART4_MspInit 0 */
+    /* USER CODE END UART4_MspInit 0 */
     /* Peripheral clock enable */
     __HAL_RCC_UART4_CLK_ENABLE();
-  
+
     __HAL_RCC_GPIOC_CLK_ENABLE();
     /**UART4 GPIO Configuration    
     PC10     ------> UART4_TX
@@ -103,11 +103,10 @@ void HAL_UART_MspInit(UART_HandleTypeDef* huart)
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /* USER CODE BEGIN UART4_MspInit 1 */
+    /* USER CODE BEGIN UART4_MspInit 1 */
 
-  /* USER CODE END UART4_MspInit 1 */
+    /* USER CODE END UART4_MspInit 1 */
   }
-
 }
 
 /**
@@ -116,27 +115,26 @@ void HAL_UART_MspInit(UART_HandleTypeDef* huart)
 * @param huart: UART handle pointer
 * @retval None
 */
-void HAL_UART_MspDeInit(UART_HandleTypeDef* huart)
+void HAL_UART_MspDeInit(UART_HandleTypeDef *huart)
 {
-  if(huart->Instance==UART4)
+  if (huart->Instance == UART4)
   {
-  /* USER CODE BEGIN UART4_MspDeInit 0 */
+    /* USER CODE BEGIN UART4_MspDeInit 0 */
 
-  /* USER CODE END UART4_MspDeInit 0 */
+    /* USER CODE END UART4_MspDeInit 0 */
     /* Peripheral clock disable */
     __HAL_RCC_UART4_CLK_DISABLE();
-  
+
     /**UART4 GPIO Configuration    
     PC10     ------> UART4_TX
     PC11     ------> UART4_RX 
     */
-    HAL_GPIO_DeInit(GPIOC, GPIO_PIN_10|GPIO_PIN_11);
+    HAL_GPIO_DeInit(GPIOC, GPIO_PIN_10 | GPIO_PIN_11);
 
-  /* USER CODE BEGIN UART4_MspDeInit 1 */
+    /* USER CODE BEGIN UART4_MspDeInit 1 */
 
-  /* USER CODE END UART4_MspDeInit 1 */
+    /* USER CODE END UART4_MspDeInit 1 */
   }
-
 }
 
 /* USER CODE BEGIN 1 */
@@ -149,7 +147,7 @@ PUTCHAR_PROTOTYPE
 {
   /* Place your implementation of fputc here */
   /* e.g. write a character to the USART1 and Loop until the end of transmission */
-  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 1, 0xFFFF);
+  HAL_UART_Transmit(&huart4, (uint8_t *)&ch, 1, 0xFFFF);
 
   return ch;
 }

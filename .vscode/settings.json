@@ -7,6 +7,8 @@
         "los_base.h": "c",
         "los_task.h": "c",
         "string.h": "c",
-        "los_sem.h": "c"
+        "los_sem.h": "c",
+        "opt.h": "c",
+        "lwipopts.h": "c"
     }
 }

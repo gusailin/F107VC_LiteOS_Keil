@@ -42,8 +42,7 @@
 #define ARP_QUEUEING   0
 #define TCP_LISTEN_BACKLOG  1
 
-
-
+#define IP_DEFAULT_TTL 64
 /**
  * SYS_LIGHTWEIGHT_PROT==1: if you want inter-task protection for certain
  * critical regions during buffer allocation, deallocation and memory
@@ -106,7 +105,7 @@ a lot of data that needs to be copied, this should be set high. */
 #if !defined ( __GNUC__ )  /* GCC*/
 #define LWIP_TCP                1
 #endif
-#define TCP_TTL                 255
+#define TCP_TTL                 64
 
 /* Controls if TCP should queue segments that arrive out of
    order. Define to 0 if your device is low on memory. */
@@ -140,7 +139,7 @@ a lot of data that needs to be copied, this should be set high. */
 
 /* ---------- UDP options ---------- */
 #define LWIP_UDP                1
-#define UDP_TTL                 255
+#define UDP_TTL                 64
 
 
 /* ---------- Statistics options ---------- */

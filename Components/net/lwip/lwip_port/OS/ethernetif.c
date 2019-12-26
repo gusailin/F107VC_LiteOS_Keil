@@ -94,6 +94,8 @@
 #define IFNAME0 'e'
 #define IFNAME1 'n'
 
+int errno;
+
 static struct netif *s_pxNetIf = NULL;
 static struct ethernet_api s_eth_api;
 

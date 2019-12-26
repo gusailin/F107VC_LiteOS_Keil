@@ -148,14 +148,17 @@ void HAL_ETH_RxCpltCallback(ETH_HandleTypeDef *heth)
 
 static void eth_thread(void *arg)
 {
+    struct netif *netif = (struct netif *)arg;
+
     for (;;)
     {
         LOS_SemPend(s_usSemID, LOS_WAIT_FOREVER);
+        netif_set_link_up(netif);
         ethernetif_input(arg);
     }
 }
 
-static int8_t dp8348_init(struct netif *netif)
+static int8_t dp83848_init(struct netif *netif)
 {
     /* USER CODE BEGIN ETH_Init 0 */
 
@@ -168,7 +171,7 @@ static int8_t dp8348_init(struct netif *netif)
     /* USER CODE END ETH_Init 1 */
     heth.Instance = ETH;
     heth.Init.AutoNegotiation = ETH_AUTONEGOTIATION_ENABLE;
-    heth.Init.PhyAddress = LAN8742A_PHY_ADDRESS;
+    heth.Init.PhyAddress = DP83848_PHY_ADDRESS;
     MACAddr[0] = 0x00;
     MACAddr[1] = 0x80;
     MACAddr[2] = 0xE1;
@@ -182,7 +185,7 @@ static int8_t dp8348_init(struct netif *netif)
 
     if (HAL_ETH_Init(&heth) == HAL_OK)
     {
-        netif->flags |= NETIF_FLAG_LINK_UP;
+        netif_set_flags(netif, NETIF_FLAG_LINK_UP);
     }
 
     HAL_ETH_DMATxDescListInit(&heth, DMATxDscrTab, &Tx_Buff[0][0], ETH_TXBUFNB);
@@ -201,24 +204,26 @@ static int8_t dp8348_init(struct netif *netif)
     netif->mtu = 1500;
 
 #if LWIP_ARP
-    netif->flags |= NETIF_FLAG_BROADCAST | NETIF_FLAG_ETHARP;
+    netif_set_flags(netif, NETIF_FLAG_BROADCAST | NETIF_FLAG_ETHARP);
 #else
-    netif->flags |= NETIF_FLAG_BROADCAST;
+    netif_set_flags(netif, NETIF_FLAG_BROADCAST);
 #endif
-    if (LOS_OK != LOS_SemCreate(1, &s_usSemID))
+    if (LOS_OK != LOS_SemCreate(0, &s_usSemID))
     {
         return -1;
     }
+
+    {
 #define NETIF_IN_TASK_STACK_SIZE (1024)
 #define NETIF_IN_TASK_PRIORITY (3)
-    {
+
         TSK_INIT_PARAM_S task;
 
-        task.usTaskPrio = NETIF_IN_TASK_STACK_SIZE;
+        task.usTaskPrio = NETIF_IN_TASK_PRIORITY;
         task.pcName = "Eth_if";
         task.pfnTaskEntry = (TSK_ENTRY_FUNC)eth_thread;
         task.uwStackSize = NETIF_IN_TASK_STACK_SIZE;
-        task.uwArg = (UINT32)&netif;
+        task.uwArg = (UINT32)netif;
         if (LOS_OK != LOS_TaskCreate(&s_uwETHRxTaskID, &task))
         {
             return -1;
@@ -231,7 +236,7 @@ static int8_t dp8348_init(struct netif *netif)
     return 0;
 }
 
-static int8_t dp8348_write(struct netif *netif, struct pbuf *p)
+static int8_t dp83848_write(struct netif *netif, struct pbuf *p)
 {
     err_t errval;
     struct pbuf *q;
@@ -307,7 +312,7 @@ error:
     return errval;
 }
 
-static struct pbuf *dp8348_read(struct netif *netif)
+static struct pbuf *dp83848_read(struct netif *netif)
 {
     struct pbuf *p = NULL;
     struct pbuf *q = NULL;
@@ -386,8 +391,8 @@ static struct pbuf *dp8348_read(struct netif *netif)
     return p;
 }
 
-struct ethernet_api dp8348_drv_api = {
-    .init = dp8348_init,
-    .output = dp8348_write,
-    .input = dp8348_read,
+struct ethernet_api dp83848_drv_api = {
+    .init = dp83848_init,
+    .output = dp83848_write,
+    .input = dp83848_read,
 };

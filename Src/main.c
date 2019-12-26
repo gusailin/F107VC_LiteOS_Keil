@@ -54,26 +54,17 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
-CAN_HandleTypeDef hcan1;
-CAN_HandleTypeDef hcan2;
-
 IWDG_HandleTypeDef hiwdg;
-
-UART_HandleTypeDef huart4;
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
 UINT32 g_uwMainTaskID;
-extern struct ethernet_api dp8348_drv_api;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 extern void LwIP_init(void);
-static void MX_CAN1_Init(void);
-static void MX_CAN2_Init(void);
 static void MX_IWDG_Init(void);
-static void MX_UART4_Init(void);
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
 
@@ -84,10 +75,8 @@ static void MX_UART4_Init(void);
 
 void main_task(void)
 {
-  
-  ethernetif_api_register(&dp8348_drv_api);
   LwIP_init();
-  
+
   for (;;)
   {
     LOS_TaskDelay(100);
@@ -141,10 +130,7 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_CAN1_Init();
-  MX_CAN2_Init();
   //  MX_IWDG_Init();
-  MX_UART4_Init();
   /* USER CODE BEGIN 2 */
   if (LOS_OK != LOS_KernelInit())
   {
@@ -212,78 +198,6 @@ void SystemClock_Config(void)
 }
 
 /**
-  * @brief CAN1 Initialization Function
-  * @param None
-  * @retval None
-  */
-static void MX_CAN1_Init(void)
-{
-
-  /* USER CODE BEGIN CAN1_Init 0 */
-
-  /* USER CODE END CAN1_Init 0 */
-
-  /* USER CODE BEGIN CAN1_Init 1 */
-
-  /* USER CODE END CAN1_Init 1 */
-  hcan1.Instance = CAN1;
-  hcan1.Init.Prescaler = 16;
-  hcan1.Init.Mode = CAN_MODE_NORMAL;
-  hcan1.Init.SyncJumpWidth = CAN_SJW_1TQ;
-  hcan1.Init.TimeSeg1 = CAN_BS1_1TQ;
-  hcan1.Init.TimeSeg2 = CAN_BS2_1TQ;
-  hcan1.Init.TimeTriggeredMode = DISABLE;
-  hcan1.Init.AutoBusOff = DISABLE;
-  hcan1.Init.AutoWakeUp = DISABLE;
-  hcan1.Init.AutoRetransmission = DISABLE;
-  hcan1.Init.ReceiveFifoLocked = DISABLE;
-  hcan1.Init.TransmitFifoPriority = DISABLE;
-  if (HAL_CAN_Init(&hcan1) != HAL_OK)
-  {
-    _Error_Handler(__FILE__, __LINE__);
-  }
-  /* USER CODE BEGIN CAN1_Init 2 */
-
-  /* USER CODE END CAN1_Init 2 */
-}
-
-/**
-  * @brief CAN2 Initialization Function
-  * @param None
-  * @retval None
-  */
-static void MX_CAN2_Init(void)
-{
-
-  /* USER CODE BEGIN CAN2_Init 0 */
-
-  /* USER CODE END CAN2_Init 0 */
-
-  /* USER CODE BEGIN CAN2_Init 1 */
-
-  /* USER CODE END CAN2_Init 1 */
-  hcan2.Instance = CAN2;
-  hcan2.Init.Prescaler = 16;
-  hcan2.Init.Mode = CAN_MODE_NORMAL;
-  hcan2.Init.SyncJumpWidth = CAN_SJW_1TQ;
-  hcan2.Init.TimeSeg1 = CAN_BS1_1TQ;
-  hcan2.Init.TimeSeg2 = CAN_BS2_1TQ;
-  hcan2.Init.TimeTriggeredMode = DISABLE;
-  hcan2.Init.AutoBusOff = DISABLE;
-  hcan2.Init.AutoWakeUp = DISABLE;
-  hcan2.Init.AutoRetransmission = DISABLE;
-  hcan2.Init.ReceiveFifoLocked = DISABLE;
-  hcan2.Init.TransmitFifoPriority = DISABLE;
-  if (HAL_CAN_Init(&hcan2) != HAL_OK)
-  {
-    _Error_Handler(__FILE__, __LINE__);
-  }
-  /* USER CODE BEGIN CAN2_Init 2 */
-
-  /* USER CODE END CAN2_Init 2 */
-}
-
-/**
   * @brief IWDG Initialization Function
   * @param None
   * @retval None
@@ -308,38 +222,6 @@ static void MX_IWDG_Init(void)
   /* USER CODE BEGIN IWDG_Init 2 */
 
   /* USER CODE END IWDG_Init 2 */
-}
-
-/**
-  * @brief UART4 Initialization Function
-  * @param None
-  * @retval None
-  */
-static void MX_UART4_Init(void)
-{
-
-  /* USER CODE BEGIN UART4_Init 0 */
-
-  /* USER CODE END UART4_Init 0 */
-
-  /* USER CODE BEGIN UART4_Init 1 */
-
-  /* USER CODE END UART4_Init 1 */
-  huart4.Instance = UART4;
-  huart4.Init.BaudRate = 115200;
-  huart4.Init.WordLength = UART_WORDLENGTH_8B;
-  huart4.Init.StopBits = UART_STOPBITS_1;
-  huart4.Init.Parity = UART_PARITY_NONE;
-  huart4.Init.Mode = UART_MODE_TX_RX;
-  huart4.Init.HwFlowCtl = UART_HWCONTROL_NONE;
-  huart4.Init.OverSampling = UART_OVERSAMPLING_16;
-  if (HAL_UART_Init(&huart4) != HAL_OK)
-  {
-    _Error_Handler(__FILE__, __LINE__);
-  }
-  /* USER CODE BEGIN UART4_Init 2 */
-
-  /* USER CODE END UART4_Init 2 */
 }
 
 /* USER CODE BEGIN 4 */
