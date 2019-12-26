@@ -10,8 +10,8 @@
 #include <string.h>
 
 ETH_HandleTypeDef heth;
-static UINT32 s_usSemID;
-static UINT32 s_uwETHRxTaskID;
+static UINT32 g_usSemID;
+static UINT32 g_uwETHRxTaskID;
 
 /* Private variables ---------------------------------------------------------*/
 #if defined(__ICCARM__) /*!< IAR Compiler */
@@ -143,7 +143,7 @@ void HAL_ETH_MspDeInit(ETH_HandleTypeDef *heth)
 
 void HAL_ETH_RxCpltCallback(ETH_HandleTypeDef *heth)
 {
-    LOS_SemPost(s_usSemID);
+    LOS_SemPost(g_usSemID);
 }
 
 static void eth_thread(void *arg)
@@ -152,7 +152,7 @@ static void eth_thread(void *arg)
 
     for (;;)
     {
-        LOS_SemPend(s_usSemID, LOS_WAIT_FOREVER);
+        LOS_SemPend(g_usSemID, LOS_WAIT_FOREVER);
         netif_set_link_up(netif);
         ethernetif_input(arg);
     }
@@ -208,7 +208,7 @@ static int8_t dp83848_init(struct netif *netif)
 #else
     netif_set_flags(netif, NETIF_FLAG_BROADCAST);
 #endif
-    if (LOS_OK != LOS_SemCreate(0, &s_usSemID))
+    if (LOS_OK != LOS_SemCreate(0, &g_usSemID))
     {
         return -1;
     }
@@ -224,7 +224,7 @@ static int8_t dp83848_init(struct netif *netif)
         task.pfnTaskEntry = (TSK_ENTRY_FUNC)eth_thread;
         task.uwStackSize = NETIF_IN_TASK_STACK_SIZE;
         task.uwArg = (UINT32)netif;
-        if (LOS_OK != LOS_TaskCreate(&s_uwETHRxTaskID, &task))
+        if (LOS_OK != LOS_TaskCreate(&g_uwETHRxTaskID, &task))
         {
             return -1;
         }

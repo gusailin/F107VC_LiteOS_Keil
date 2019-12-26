@@ -337,7 +337,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F107xC,HSE_VALUE=50000000,LOS_KERNEL_DEBUG_OUT</Define>
               <Undefine></Undefine>
-              <IncludePath>../Inc;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;..\OS_CONFIG;..\Middlewares\LiteOS\arch\arm\arm-m\include;..\Middlewares\LiteOS\kernel\include;..\Middlewares\LiteOS\kernel\base\include;..\Middlewares\LiteOS\examples\include;..\Components\net\lwip\lwip-2.1.2\src\include;..\Components\net\lwip\lwip_port\arch;..\Components\net\lwip\lwip_port\OS;..\Components\net\lwip\lwip_port</IncludePath>
+              <IncludePath>../Inc;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;..\OS_CONFIG;..\Middlewares\LiteOS\arch\arm\arm-m\include;..\Middlewares\LiteOS\kernel\include;..\Middlewares\LiteOS\kernel\base\include;..\Middlewares\LiteOS\examples\include;..\Components\net\lwip\lwip-2.1.2\src\include;..\Components\net\lwip\lwip_port\arch;..\Components\net\lwip\lwip_port\OS;..\Components\net\lwip\lwip_port;..\Components\connectivity\mqtt\MQTTPacket\src;..\Components\connectivity\mqtt\MQTTClient-C\src;..\Components\connectivity\mqtt\MQTTClient-C\src\liteOS</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -820,6 +820,101 @@
               <FileName>target_config.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\OS_CONFIG\target_config.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>sal</GroupName>
+          <Files>
+            <File>
+              <FileName>atiny_socket.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Components\net\sal\atiny_socket.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>mqtt</GroupName>
+          <Files>
+            <File>
+              <FileName>MQTTFormat.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Components\connectivity\mqtt\MQTTPacket\src\MQTTFormat.c</FilePath>
+            </File>
+            <File>
+              <FileName>MQTTPacket.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Components\connectivity\mqtt\MQTTPacket\src\MQTTPacket.c</FilePath>
+            </File>
+            <File>
+              <FileName>MQTTSerializePublish.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Components\connectivity\mqtt\MQTTPacket\src\MQTTSerializePublish.c</FilePath>
+            </File>
+            <File>
+              <FileName>MQTTDeserializePublish.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Components\connectivity\mqtt\MQTTPacket\src\MQTTDeserializePublish.c</FilePath>
+            </File>
+            <File>
+              <FileName>MQTTSubscribeClient.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Components\connectivity\mqtt\MQTTPacket\src\MQTTSubscribeClient.c</FilePath>
+            </File>
+            <File>
+              <FileName>MQTTSubscribeServer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Components\connectivity\mqtt\MQTTPacket\src\MQTTSubscribeServer.c</FilePath>
+            </File>
+            <File>
+              <FileName>MQTTConnectServer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Components\connectivity\mqtt\MQTTPacket\src\MQTTConnectServer.c</FilePath>
+            </File>
+            <File>
+              <FileName>MQTTConnectClient.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Components\connectivity\mqtt\MQTTPacket\src\MQTTConnectClient.c</FilePath>
+            </File>
+            <File>
+              <FileName>MQTTUnsubscribeClient.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Components\connectivity\mqtt\MQTTPacket\src\MQTTUnsubscribeClient.c</FilePath>
+            </File>
+            <File>
+              <FileName>MQTTUnsubscribeServer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Components\connectivity\mqtt\MQTTPacket\src\MQTTUnsubscribeServer.c</FilePath>
+            </File>
+            <File>
+              <FileName>MQTTliteos.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Components\connectivity\mqtt\MQTTClient-C\src\liteOS\MQTTliteos.c</FilePath>
+            </File>
+            <File>
+              <FileName>MQTTClient.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Components\connectivity\mqtt\MQTTClient-C\src\MQTTClient.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>osdepends</GroupName>
+          <Files>
+            <File>
+              <FileName>atiny_osdep.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\osdepends\liteos\atiny_osdep.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>cJSON</GroupName>
+          <Files>
+            <File>
+              <FileName>cJSON.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Components\lib\cJSON\cJSON.c</FilePath>
             </File>
           </Files>
         </Group>

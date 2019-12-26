@@ -9,6 +9,7 @@
         "string.h": "c",
         "los_sem.h": "c",
         "opt.h": "c",
-        "lwipopts.h": "c"
+        "lwipopts.h": "c",
+        "cjson.h": "c"
     }
 }
