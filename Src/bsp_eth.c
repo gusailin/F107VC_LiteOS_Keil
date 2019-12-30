@@ -10,8 +10,8 @@
 #include <string.h>
 
 ETH_HandleTypeDef heth;
-static UINT32 g_usSemID;
-static UINT32 g_uwETHRxTaskID;
+static UINT32 s_uwSemID;
+static UINT32 s_uwETHRxTaskID;
 
 /* Private variables ---------------------------------------------------------*/
 #if defined(__ICCARM__) /*!< IAR Compiler */
@@ -143,7 +143,7 @@ void HAL_ETH_MspDeInit(ETH_HandleTypeDef *heth)
 
 void HAL_ETH_RxCpltCallback(ETH_HandleTypeDef *heth)
 {
-    LOS_SemPost(g_usSemID);
+    LOS_SemPost(s_uwSemID);
 }
 
 static void eth_thread(void *arg)
@@ -152,7 +152,7 @@ static void eth_thread(void *arg)
 
     for (;;)
     {
-        LOS_SemPend(g_usSemID, LOS_WAIT_FOREVER);
+        LOS_SemPend(s_uwSemID, LOS_WAIT_FOREVER);
         netif_set_link_up(netif);
         ethernetif_input(arg);
     }
@@ -208,28 +208,17 @@ static int8_t dp83848_init(struct netif *netif)
 #else
     netif_set_flags(netif, NETIF_FLAG_BROADCAST);
 #endif
-    if (LOS_OK != LOS_SemCreate(0, &g_usSemID))
+    if (LOS_OK != LOS_SemCreate(0, &s_uwSemID))
     {
         return -1;
     }
 
-    {
-#define NETIF_IN_TASK_STACK_SIZE (1024)
+#define NETIF_IN_TASK_STACK_SIZE (512)
 #define NETIF_IN_TASK_PRIORITY (3)
-
-        TSK_INIT_PARAM_S task;
-
-        task.usTaskPrio = NETIF_IN_TASK_PRIORITY;
-        task.pcName = "Eth_if";
-        task.pfnTaskEntry = (TSK_ENTRY_FUNC)eth_thread;
-        task.uwStackSize = NETIF_IN_TASK_STACK_SIZE;
-        task.uwArg = (UINT32)netif;
-        if (LOS_OK != LOS_TaskCreate(&g_uwETHRxTaskID, &task))
-        {
-            return -1;
-        }
+    if (sys_thread_new("Eth_if", eth_thread, (void *)netif, NETIF_IN_TASK_STACK_SIZE, NETIF_IN_TASK_PRIORITY) == -1)
+    {
+        return -1;
     }
-
     (void)HAL_ETH_Start(&heth);
 #endif
 
@@ -247,7 +236,6 @@ static int8_t dp83848_write(struct netif *netif, struct pbuf *p)
     uint32_t byteslefttocopy = 0;
     uint32_t payloadoffset = 0;
     DmaTxDesc = heth.TxDesc;
-    bufferoffset = 0;
 
     /* copy frame from pbufs to driver buffers */
     for (q = p; q != NULL; q = q->next)
