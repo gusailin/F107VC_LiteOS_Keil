@@ -195,25 +195,18 @@ void ethernetif_input(void *pvParameters)
 
     do
     {
-        SYS_ARCH_DECL_PROTECT(sr);
-
-        SYS_ARCH_PROTECT(sr);
+        LOCK_TCPIP_CORE();
         p = low_level_input(s_pxNetIf);
-        SYS_ARCH_UNPROTECT(sr);
 
-        if (!p)
+        if (p != NULL)
         {
-            return;
+					  if (s_pxNetIf->input(p, s_pxNetIf) != ERR_OK)
+            {
+                pbuf_free(p);
+            }
         }
-
-        rc = s_pxNetIf->input(p, s_pxNetIf);
-        if (rc != ERR_OK)
-        {
-            LWIP_DEBUGF(NETIF_DEBUG, ("ethernetif_input: IP input error\n"));
-            pbuf_free(p);
-            p = NULL;
-        }
-    } while (p);
+        UNLOCK_TCPIP_CORE();
+    } while (p != NULL);
 }
 
 /**

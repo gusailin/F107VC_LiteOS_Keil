@@ -165,7 +165,7 @@ void MX_CAN1_Init(void)
   hcan1.Init.TransmitFifoPriority = DISABLE;
   if (HAL_CAN_Init(&hcan1) != HAL_OK)
   {
-    _Error_Handler(__FILE__, __LINE__);
+    Error_Handler(__FILE__, __LINE__);
   }
   /* USER CODE BEGIN CAN1_Init 2 */
 
@@ -201,7 +201,7 @@ void MX_CAN2_Init(void)
   hcan2.Init.TransmitFifoPriority = DISABLE;
   if (HAL_CAN_Init(&hcan2) != HAL_OK)
   {
-    _Error_Handler(__FILE__, __LINE__);
+    Error_Handler(__FILE__, __LINE__);
   }
   /* USER CODE BEGIN CAN2_Init 2 */
 

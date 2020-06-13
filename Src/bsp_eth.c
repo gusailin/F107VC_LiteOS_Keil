@@ -149,26 +149,53 @@ void HAL_ETH_RxCpltCallback(ETH_HandleTypeDef *heth)
 static void eth_thread(void *arg)
 {
     struct netif *netif = (struct netif *)arg;
-
+	
     for (;;)
     {
-        LOS_SemPend(s_uwSemID, LOS_WAIT_FOREVER);
-        netif_set_link_up(netif);
-        ethernetif_input(arg);
+        if (LOS_SemPend(s_uwSemID, LOS_WAIT_FOREVER) == LOS_OK) {
+            ethernetif_input(arg);			
+				}
     }
+}
+
+/**
+  * @brief  This function sets the netif link status.
+  * @param  netif: the network interface
+  * @retval None
+  */
+void ethernetif_set_link(void* argument)
+{
+  uint32_t regvalue = 0;
+  struct netif *netif = (struct netif *)argument;
+  
+  for(;;)
+  {
+    /* Read PHY_BSR*/
+    HAL_ETH_ReadPHYRegister(&heth, PHY_BSR, &regvalue);
+    
+    regvalue &= PHY_LINKED_STATUS;
+    
+    /* Check whether the netif link down and the PHY link is up */
+    if(!netif_is_link_up(netif) && (regvalue))
+    {
+      /* network cable is connected */ 
+      netif_set_link_up(netif);        
+    }
+    else if(netif_is_link_up(netif) && (!regvalue))
+    {
+      /* network cable is dis-connected */
+      netif_set_link_down(netif);
+    }
+    
+    /* Suspend thread for 200 ms */
+    LOS_TaskDelay(200);
+  }
 }
 
 static int8_t dp83848_init(struct netif *netif)
 {
-    /* USER CODE BEGIN ETH_Init 0 */
-
-    /* USER CODE END ETH_Init 0 */
-
     uint8_t MACAddr[6];
 
-    /* USER CODE BEGIN ETH_Init 1 */
-
-    /* USER CODE END ETH_Init 1 */
     heth.Instance = ETH;
     heth.Init.AutoNegotiation = ETH_AUTONEGOTIATION_ENABLE;
     heth.Init.PhyAddress = DP83848_PHY_ADDRESS;
@@ -215,12 +242,14 @@ static int8_t dp83848_init(struct netif *netif)
 
 #define NETIF_IN_TASK_STACK_SIZE (512)
 #define NETIF_IN_TASK_PRIORITY (3)
-    if (sys_thread_new("Eth_if", eth_thread, (void *)netif, NETIF_IN_TASK_STACK_SIZE, NETIF_IN_TASK_PRIORITY) == -1)
+    if (sys_thread_new("EthIf", eth_thread, (void *)netif, NETIF_IN_TASK_STACK_SIZE, NETIF_IN_TASK_PRIORITY) == -1)
     {
         return -1;
     }
     (void)HAL_ETH_Start(&heth);
 #endif
+		
+		sys_thread_new("LinkThr", ethernetif_set_link, (void *)netif, 512, 30);
 
     return 0;
 }

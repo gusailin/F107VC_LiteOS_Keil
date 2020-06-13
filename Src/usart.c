@@ -67,7 +67,7 @@ void MX_USART4_UART_Init(void)
   huart4.Init.OverSampling = UART_OVERSAMPLING_16;
   if (HAL_UART_Init(&huart4) != HAL_OK)
   {
-    _Error_Handler(__FILE__, __LINE__);
+    Error_Handler(__FILE__, __LINE__);
   }
 }
 

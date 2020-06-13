@@ -17,9 +17,12 @@ struct netif gnetif;
 ip4_addr_t ipaddr;
 ip4_addr_t netmask;
 ip4_addr_t gw;
+
+#ifndef USE_DHCP
 uint8_t IP_ADDRESS[4];
 uint8_t NETMASK_ADDRESS[4];
 uint8_t GATEWAY_ADDRESS[4];
+#endif
 
 static void netif_link_callback(struct netif *netif)
 {
@@ -37,7 +40,7 @@ void LwIP_init(void)
 {
     IP_ADDRESS[0] = 192;
     IP_ADDRESS[1] = 168;
-    IP_ADDRESS[2] = 15;
+    IP_ADDRESS[2] = 3;
     IP_ADDRESS[3] = 231;
     NETMASK_ADDRESS[0] = 255;
     NETMASK_ADDRESS[1] = 255;
@@ -45,7 +48,7 @@ void LwIP_init(void)
     NETMASK_ADDRESS[3] = 0;
     GATEWAY_ADDRESS[0] = 192;
     GATEWAY_ADDRESS[1] = 168;
-    GATEWAY_ADDRESS[2] = 15;
+    GATEWAY_ADDRESS[2] = 3;
     GATEWAY_ADDRESS[3] = 1;
 
     tcpip_init(NULL, NULL);
@@ -76,4 +79,8 @@ void LwIP_init(void)
     {
         netif_set_down(&gnetif);
     }
+		
+#ifdef USE_DHCP
+  dhcp_start(&gnetif);
+#endif
 }

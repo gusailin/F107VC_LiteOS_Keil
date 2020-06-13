@@ -51,7 +51,7 @@ extern "C" {
 /* USER CODE END EM */
 
 /* Exported functions prototypes ---------------------------------------------*/
-void _Error_Handler(char *file, int line);
+void Error_Handler(char *file, int line);
 
 /* USER CODE BEGIN EFP */
 
