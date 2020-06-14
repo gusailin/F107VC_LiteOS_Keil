@@ -153,4 +153,9 @@
     }                                                               \
   } while (0)
 
+#ifdef __GNUC__
+#define LWIP_TIMEVAL_PRIVATE 0
+#include <sys/time.h>
+#endif
+
 #endif /* __CC_H__ */

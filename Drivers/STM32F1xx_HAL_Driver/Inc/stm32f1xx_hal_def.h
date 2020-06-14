@@ -32,7 +32,6 @@ extern "C" {
 #include "Legacy/stm32_hal_legacy.h"
 #endif
 #include <stddef.h>
-#include <stdio.h>
 
 /* Exported types ------------------------------------------------------------*/
 

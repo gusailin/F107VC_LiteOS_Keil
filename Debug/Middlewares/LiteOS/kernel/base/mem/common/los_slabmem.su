@@ -1,0 +1,8 @@
+los_slabmem.c:44:7:osSlabBlockHeadFill	16	static
+los_slabmem.c:59:6:osSlabMemInit	40	static
+los_slabmem.c:95:7:osSlabMemAlloc	40	static
+los_slabmem.c:153:6:osSlabMemFree	40	static
+los_slabmem.c:196:6:osSlabMemDeinit	40	static
+los_slabmem.c:226:8:osSlabMemCheck	40	static
+los_slabmem.c:255:8:osSlabStatisticsGet	56	static
+los_slabmem.c:298:8:osSlabGetMaxFreeBlkSize	40	static

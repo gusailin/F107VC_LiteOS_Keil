@@ -1,0 +1,12 @@
+los_list.h:80:43:LOS_ListInit	16	static
+los_list.h:129:43:LOS_ListAdd	16	static
+los_list.h:157:43:LOS_ListTailInsert	16	static
+los_list.h:183:43:LOS_ListDelete	16	static
+los_list.h:213:43:LOS_ListEmpty	16	static
+los_sem.c:65:30:osSemInit	16	static
+los_sem.c:102:30:osSemCreate	48	static
+los_sem.c:150:30:LOS_SemCreate	16	static
+los_sem.c:162:30:LOS_BinarySemCreate	16	static
+los_sem.c:174:30:LOS_SemDelete	40	static
+los_sem.c:216:25:LOS_SemPend	40	static
+los_sem.c:297:25:LOS_SemPost	40	static

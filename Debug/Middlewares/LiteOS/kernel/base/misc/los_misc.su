@@ -1,0 +1,2 @@
+los_misc.c:40:25:LOS_Align	16	static
+los_misc.c:49:29:LOS_Msleep	24	static

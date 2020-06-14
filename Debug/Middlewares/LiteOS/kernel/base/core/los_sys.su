@@ -1,0 +1,6 @@
+los_sys.c:51:31:LOS_TickCountGet	8	static
+los_sys.c:63:31:LOS_CyclePerTickGet	4	static
+los_sys.c:77:31:LOS_MS2Tick	32	static
+los_sys.c:94:31:LOS_Tick2MS	32	static
+los_sys.c:107:30:osCpuTick2MS	56	static
+los_sys.c:135:30:osCpuTick2US	56	static

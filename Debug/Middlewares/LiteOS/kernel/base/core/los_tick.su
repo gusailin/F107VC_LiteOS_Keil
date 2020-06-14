@@ -1,0 +1,2 @@
+los_tick.c:95:23:osTickHandler	16	static
+los_tick.c:130:25:LOS_SysClockGet	4	static

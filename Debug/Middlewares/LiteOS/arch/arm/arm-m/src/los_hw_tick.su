@@ -1,0 +1,6 @@
+core_cm3.h:1639:22:__NVIC_SetPriority	16	static
+core_cm3.h:1834:26:SysTick_Config	16	static
+los_hw_tick.c:54:30:osTickStart	24	static
+los_hw_tick.c:111:31:LOS_SysTickCurrCycleGet	16	static
+los_hw_tick.c:139:29:LOS_GetCpuCycle	48	static
+los_hw_tick.c:176:29:LOS_GetSystickCycle	64	static

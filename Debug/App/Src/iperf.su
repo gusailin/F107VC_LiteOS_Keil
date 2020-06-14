@@ -1,0 +1,2 @@
+iperf.c:16:6:iperf_server	128	static
+iperf.c:84:6:iperf_server_init	32	static

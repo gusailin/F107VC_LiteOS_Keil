@@ -1,0 +1,6 @@
+stdlib.h:93:6:free	16	static
+stdlib.h:104:8:malloc	24	static
+malloc.c:95:7:zalloc	24	static
+stdlib.h:90:8:calloc	16	static
+malloc.c:137:7:memalign	24	static
+stdlib.h:141:8:realloc	16	static

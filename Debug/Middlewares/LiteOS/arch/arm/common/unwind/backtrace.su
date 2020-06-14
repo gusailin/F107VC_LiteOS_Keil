@@ -1,0 +1,12 @@
+backtrace.c:104:56:search_index	32	static
+backtrace.c:168:56:unwind_find_origin	24	static
+backtrace.c:186:56:unwind_find_idx	24	static
+backtrace.c:209:45:unwind_get_byte	24	static
+backtrace.c:231:35:unwind_pop_register	24	static
+backtrace.c:243:35:unwind_exec_pop_subset_r4_to_r13	32	static
+backtrace.c:263:35:unwind_exec_pop_r4_to_rN	24	static
+backtrace.c:283:35:unwind_exec_pop_subset_r0_to_r3	24	static
+backtrace.c:305:35:unwind_exec_insn	48	static
+backtrace.c:372:43:unwind_get_function_name	24	static
+backtrace.c:386:35:unwind_frame	112	static
+backtrace.c:483:29:unwind_backtrace	32	static

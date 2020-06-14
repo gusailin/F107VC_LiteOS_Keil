@@ -337,9 +337,9 @@
             <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls></MiscControls>
-              <Define>USE_HAL_DRIVER,STM32F107xC,HSE_VALUE=50000000,LOS_KERNEL_DEBUG_OUT</Define>
+              <Define>USE_HAL_DRIVER,STM32F107xC,LOS_KERNEL_DEBUG_OUT</Define>
               <Undefine></Undefine>
-              <IncludePath>../Inc;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;..\OS_CONFIG;..\Middlewares\LiteOS\arch\arm\arm-m\include;..\Middlewares\LiteOS\kernel\include;..\Middlewares\LiteOS\kernel\base\include;..\Middlewares\LiteOS\examples\include;..\Components\net\lwip\lwip-2.1.2\src\include;..\Components\net\lwip\lwip_port\arch;..\Components\net\lwip\lwip_port\OS;..\Components\net\lwip\lwip_port;..\Components\connectivity\mqtt\MQTTPacket\src;..\Components\connectivity\mqtt\MQTTClient-C\src;..\Components\connectivity\mqtt\MQTTClient-C\src\liteOS</IncludePath>
+              <IncludePath>../Inc;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;..\OS_CONFIG;..\Middlewares\LiteOS\arch\arm\arm-m\include;..\Middlewares\LiteOS\kernel\include;..\Middlewares\LiteOS\kernel\base\include;..\Middlewares\LiteOS\examples\include;..\Components\net\lwip\lwip-2.1.2\src\include;..\Components\net\lwip\lwip_port\arch;..\Components\net\lwip\lwip_port\OS;..\Components\net\lwip\lwip_port;..\Components\connectivity\mqtt\MQTTPacket\src;..\Components\connectivity\mqtt\MQTTClient-C\src;..\Components\connectivity\mqtt\MQTTClient-C\src\liteOS;..\Core\Inc;..\Components\Inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -481,7 +481,7 @@
             <File>
               <FileName>system_stm32f1xx.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..//Src/system_stm32f1xx.c</FilePath>
+              <FilePath>..\Core\Src\system_stm32f1xx.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -921,47 +921,82 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Application/User</GroupName>
+          <GroupName>libc</GroupName>
           <Files>
             <File>
-              <FileName>gpio.c</FileName>
+              <FileName>malloc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Src/gpio.c</FilePath>
+              <FilePath>..\Components\lib\libc\malloc.c</FilePath>
             </File>
             <File>
-              <FileName>usart.c</FileName>
+              <FileName>errno.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Src/usart.c</FilePath>
+              <FilePath>..\Components\lib\libc\errno.c</FilePath>
             </File>
-            <File>
-              <FileName>stm32f1xx_it.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>../Src/stm32f1xx_it.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32f1xx_hal_msp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>../Src/stm32f1xx_hal_msp.c</FilePath>
-            </File>
-            <File>
-              <FileName>lwip.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Src\lwip.c</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_eth.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Src\bsp_eth.c</FilePath>
-            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Core</GroupName>
+          <Files>
             <File>
               <FileName>can.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\can.c</FilePath>
+              <FilePath>..\Core\Src\can.c</FilePath>
+            </File>
+            <File>
+              <FileName>gpio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\gpio.c</FilePath>
+            </File>
+            <File>
+              <FileName>iwdg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\iwdg.c</FilePath>
             </File>
             <File>
               <FileName>main.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Src/main.c</FilePath>
+              <FilePath>..\Core\Src\main.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f1xx_hal_msp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\stm32f1xx_hal_msp.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f1xx_it.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\stm32f1xx_it.c</FilePath>
+            </File>
+            <File>
+              <FileName>usart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\usart.c</FilePath>
+            </File>
+            <File>
+              <FileName>eth.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\eth.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Hardware</GroupName>
+          <Files>
+            <File>
+              <FileName>bsp_eth.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Hardware\Src\bsp_eth.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>App/User</GroupName>
+          <Files>
+            <File>
+              <FileName>lwip.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\App\Src\lwip.c</FilePath>
             </File>
           </Files>
         </Group>

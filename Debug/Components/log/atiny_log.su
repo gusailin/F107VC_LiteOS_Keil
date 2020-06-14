@@ -1,0 +1,3 @@
+atiny_log.c:48:6:atiny_set_log_level	16	static
+atiny_log.c:53:13:atiny_get_log_level	4	static
+atiny_log.c:58:13:atiny_get_log_level_name	16	static

@@ -1,0 +1,2 @@
+los_hwi.c:95:31:osIntNumGet	16	static,ignoring_inline_asm
+los_hwi.c:276:6:SysTick_Handler	16	static

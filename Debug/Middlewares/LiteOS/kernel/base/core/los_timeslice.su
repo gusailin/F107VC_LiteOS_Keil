@@ -1,0 +1,2 @@
+los_timeslice.c:57:28:osTimesliceInit	4	static
+los_timeslice.c:70:23:osTimesliceCheck	16	static

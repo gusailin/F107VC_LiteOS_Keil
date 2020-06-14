@@ -1,0 +1,11 @@
+los_memory.c:57:30:osSlabCtrlHdrGet	16	static
+los_memory.c:74:30:LOS_MemInit	48	static
+los_memory.c:150:30:osMemSystemInit	16	static
+los_memory.c:163:30:LOS_MemDeInit	32	static
+los_memory.c:209:30:LOS_MemPoolList	16	static
+los_memory.c:232:24:LOS_MemAlloc	24	static
+los_memory.c:258:24:LOS_MemAllocAlign	24	static
+los_memory.c:272:30:LOS_MemRealloc	48	static
+los_memory.c:341:25:LOS_MemFree	24	static
+los_memory.c:359:25:LOS_MemStatisticsGet	64	static
+los_memory.c:395:31:LOS_MemGetMaxFreeBlkSize	24	static

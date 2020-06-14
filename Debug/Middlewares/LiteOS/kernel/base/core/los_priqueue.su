@@ -1,0 +1,11 @@
+los_list.h:80:43:LOS_ListInit	16	static
+los_list.h:129:43:LOS_ListAdd	16	static
+los_list.h:157:43:LOS_ListTailInsert	16	static
+los_list.h:183:43:LOS_ListDelete	16	static
+los_list.h:213:43:LOS_ListEmpty	16	static
+los_priqueue.c:47:23:osPriqueueInit	16	static
+los_priqueue.c:65:23:osPriqueueEnqueue	16	static
+los_priqueue.c:75:23:osPriqueueDequeue	24	static
+los_priqueue.c:87:31:osPriqueueTop	16	static
+los_priqueue.c:100:25:osPriqueueSize	24	static
+los_priqueue.c:113:25:osPriqueueTotalSize	16	static

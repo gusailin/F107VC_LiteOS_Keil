@@ -1,0 +1,16 @@
+los_swtmr.c:91:23:osSwTmrTask	48	static
+los_swtmr.c:126:30:osSwTmrTaskCreate	40	static
+los_swtmr.c:147:30:osSwTmrInit	40	static
+los_swtmr.c:207:23:osSwTmrStart	64	static
+los_swtmr.c:349:37:osSwtmrDelete	16	static
+los_swtmr.c:368:23:osSwtmrStop	24	static
+los_swtmr.c:413:30:osSwTmrTimeoutHandle	24	static
+los_swtmr.c:452:25:osSwtmrScan	8	static
+los_swtmr.c:526:23:osSwtimerInsert	32	static
+los_swtmr.c:577:23:osSwTmrAdjust	24	static
+los_swtmr.c:643:25:osSwtmrTimeGet	24	static
+los_swtmr.c:673:30:LOS_SwtmrCreate	32	static
+los_swtmr.c:749:25:LOS_SwtmrStart	40	static
+los_swtmr.c:799:25:LOS_SwtmrStop	32	static
+los_swtmr.c:827:25:LOS_SwtmrTimeGet	32	static
+los_swtmr.c:879:25:LOS_SwtmrDelete	32	static

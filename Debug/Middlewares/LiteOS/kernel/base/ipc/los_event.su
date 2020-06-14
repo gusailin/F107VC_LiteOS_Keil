@@ -1,0 +1,8 @@
+los_list.h:80:43:LOS_ListInit	16	static
+los_list.h:213:43:LOS_ListEmpty	16	static
+los_event.c:48:30:LOS_EventInit	16	static
+los_event.c:59:25:LOS_EventPoll	32	static
+los_event.c:89:25:LOS_EventRead	40	static
+los_event.c:171:25:LOS_EventWrite	32	static
+los_event.c:225:30:LOS_EventDestory	24	static
+los_event.c:250:31:LOS_EventClear	24	static

@@ -35,14 +35,18 @@
 //#define IPV6_FRAG_COPYHEADER            1
 //#define LWIP_IPV6_DUP_DETECT_ATTEMPTS   0
 
-//#define LWIP_IPV4           0
 #define ETHARP_TRUST_IP_MAC 0
 #define IP_REASSEMBLY  1
 #define IP_FRAG        1
 #define ARP_QUEUEING   0
-#define TCP_LISTEN_BACKLOG  1
+#define TCP_LISTEN_BACKLOG  5
+
+#define LWIP_SINGLE_NETIF 1
 
 #define IP_DEFAULT_TTL 64
+
+#define MEM_LIBC_MALLOC 1
+
 /**
  * SYS_LIGHTWEIGHT_PROT==1: if you want inter-task protection for certain
  * critical regions during buffer allocation, deallocation and memory
@@ -170,10 +174,7 @@ The STM32F4x7 allows computing and verifying the IP, UDP, TCP and ICMP checksums
 #define  PPP_IPV4_SUPPORT  1
 #else
 #define CHECKSUM_BY_HARDWARE
-
 #endif
-
-
 
 #ifdef CHECKSUM_BY_HARDWARE
   /* CHECKSUM_GEN_IP==0: Generate checksums by hardware for outgoing IP packets.*/

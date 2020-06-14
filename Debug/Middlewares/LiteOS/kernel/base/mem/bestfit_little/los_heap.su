@@ -1,0 +1,9 @@
+los_heap.c:68:40:osHeapPrvGetNext	16	static
+los_heap.c:82:28:osHeapInit	24	static
+los_heap.c:113:24:osHeapAlloc	40	static
+los_heap.c:208:24:osHeapAllocAlign	40	static
+los_heap.c:250:23:osHeapFree	40	static
+los_heap.c:328:29:osAlarmHeapInfo	40	static
+los_heap.c:340:31:osHeapStatisticsGet	32	static
+los_heap.c:381:31:osHeapGetHeapMemoryPeak	4	static
+los_heap.c:387:31:osHeapGetMaxFreeBlkSize	32	static

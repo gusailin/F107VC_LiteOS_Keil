@@ -1,0 +1,9 @@
+ethernetif.c:107:8:ethernetif_api_register	16	static
+ethernetif.c:125:13:low_level_init	16	static
+ethernetif.c:148:14:low_level_output	24	static
+ethernetif.c:168:21:low_level_input	24	static
+ethernetif.c:188:6:ethernetif_input	24	static
+ethernetif.c:220:7:ethernetif_init	16	static
+ethernetif.c:255:13:arp_timer	16	static
+ethernetif.c:289:6:ethernetif_update_config	32	static
+ethernetif.c:377:13:ethernetif_notify_conn_changed	16	static

@@ -1,0 +1,5 @@
+los_init.c:55:28:osEnableFPU	4	static
+los_init.c:67:28:LOS_Reboot	8	static
+los_init.c:81:35:osRegister	4	static
+los_init.c:95:30:LOS_Start	16	static
+los_init.c:133:30:LOS_KernelInit	16	static

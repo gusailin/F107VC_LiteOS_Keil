@@ -1,0 +1,6 @@
+bsp_eth.c:36:6:HAL_ETH_RxCpltCallback	16	static
+bsp_eth.c:41:13:eth_thread	24	static
+bsp_eth.c:58:6:ethernetif_set_link	24	static
+bsp_eth.c:87:15:dp83848_init	32	static
+bsp_eth.c:151:15:dp83848_write	48	static
+bsp_eth.c:226:21:dp83848_read	56	static

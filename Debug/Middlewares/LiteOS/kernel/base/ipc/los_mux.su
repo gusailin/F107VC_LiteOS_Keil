@@ -1,0 +1,10 @@
+los_list.h:80:43:LOS_ListInit	16	static
+los_list.h:129:43:LOS_ListAdd	16	static
+los_list.h:157:43:LOS_ListTailInsert	16	static
+los_list.h:183:43:LOS_ListDelete	16	static
+los_list.h:213:43:LOS_ListEmpty	16	static
+los_mux.c:65:30:osMuxInit	16	static
+los_mux.c:100:32:LOS_MuxCreate	48	static
+los_mux.c:142:30:LOS_MuxDelete	40	static
+los_mux.c:186:25:LOS_MuxPend	40	static
+los_mux.c:281:25:LOS_MuxPost	40	static

@@ -37,7 +37,7 @@
  * compliance with such applicable export control laws and regulations.
  ************************************************************************/
 
-#include "stdlib.h"
+#include <stdlib.h>
 #include "los_memory.h"
 #include "string.h"
 

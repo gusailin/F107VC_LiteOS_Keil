@@ -1,0 +1,5 @@
+los_hw.c:54:23:osSchedule	8	static
+los_hw.c:66:23:LOS_Schedule	16	static
+los_hw.c:98:29:osTaskExit	4	static,ignoring_inline_asm
+los_hw.c:113:29:osTskStackInit	32	static
+los_hw.c:152:28:osEnterSleep	4	static,ignoring_inline_asm

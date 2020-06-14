@@ -1,0 +1,2 @@
+lwip.c:28:6:ethernetif_notify_conn_changed	16	static
+lwip.c:40:6:LwIP_init	24	static
