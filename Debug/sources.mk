@@ -22,6 +22,7 @@ Components/connectivity/mqtt/MQTTClient-C/src \
 Components/connectivity/mqtt/MQTTClient-C/src/liteOS \
 Components/connectivity/mqtt/MQTTPacket/src \
 Components/fs/devfs \
+Components/fs/kifs \
 Components/fs/vfs \
 Components/lib/cJSON \
 Components/lib/libc \

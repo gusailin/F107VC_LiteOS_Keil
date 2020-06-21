@@ -34,6 +34,7 @@ RM := rm -rf
 -include Components/lib/libc/subdir.mk
 -include Components/lib/cJSON/subdir.mk
 -include Components/fs/vfs/subdir.mk
+-include Components/fs/kifs/subdir.mk
 -include Components/fs/devfs/subdir.mk
 -include Components/connectivity/mqtt/MQTTPacket/src/subdir.mk
 -include Components/connectivity/mqtt/MQTTClient-C/src/liteOS/subdir.mk

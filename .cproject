@@ -59,6 +59,7 @@
 									<listOptionValue builtIn="false" value="../Components/connectivity/mqtt/MQTTPacket/src"/>
 									<listOptionValue builtIn="false" value="../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy"/>
 									<listOptionValue builtIn="false" value="../Drivers/STM32F1xx_HAL_Driver/Inc"/>
+									<listOptionValue builtIn="false" value="../Hardware/Inc"/>
 									<listOptionValue builtIn="false" value="../Components/net/lwip/lwip_port/arch"/>
 								</option>
 								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.1101136652" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c"/>
@@ -89,11 +90,12 @@
 					</folderInfo>
 					<sourceEntries>
 						<entry excluding="LiteOS/arch/arm/arm-m/cortex-m3/keil|LiteOS/arch/arm/arm-m/cortex-m3/iar|LiteOS/arch/arm/arm-m/cortex-m7|LiteOS/arch/arm/arm-m/cortex-m4|LiteOS/arch/arm/arm-m/cortex-m0|LiteOS/kernel/base/mem/tlsf|LiteOS/kernel/base/mem/membox|LiteOS/kernel/base/mem/bestfit|LiteOS/examples|LiteOS/arch/arm/cortex-m/cortex-m3/keil|LiteOS/arch/arm/cortex-m/cortex-m3/iar|LiteOS/arch/arm/cortex-m/cortex-m7|LiteOS/arch/arm/cortex-m/cortex-m4|LiteOS/arch/arm/cortex-m/cortex-m0|LiteOS/arch/arm/cortex-a" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Middlewares"/>
-						<entry excluding="lib/libc/newlib_stub.c|connectivity/mqtt/MQTTClient-C/src/linux|connectivity/mqtt/MQTTClient-C/src/FreeRTOS|connectivity/mqtt/MQTTClient-C/src/cc3200|connectivity/mqtt/MQTTClient-C/samples|connectivity/mqtt/MQTTClient-C/test|connectivity/mqtt/MQTTPacket/samples|connectivity/mqtt/MQTTPacket/test|fs/spiffs|fs/ramfs|fs/kifs|fs/fatfs|net/lwip/lwip-2.1.2/test|net/sal|connectivity/lwm2m|security|ota|net/lwip/lwip-2.1.2/doc|net/lwip/lwip-2.1.2/src/netif/zepif.c|net/lwip/lwip-2.1.2/src/netif/slipif.c|net/lwip/lwip-2.1.2/src/netif/lowpan6.c|net/lwip/lwip-2.1.2/src/netif/lowpan6_common.c|net/lwip/lwip-2.1.2/src/netif/lowpan6_ble.c|net/lwip/lwip-2.1.2/src/netif/bridgeif.c|net/lwip/lwip-2.1.2/src/netif/bridgeif_fdb.c|net/lwip/lwip-2.1.2/src/netif/ppp|net/lwip/lwip-2.1.2/src/apps|net/lwip/ppp_port|net/lwip/lwip-2.0.3|net/at_device|connectivity/nb_iot|connectivity/agent_tiny" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Components"/>
+						<entry excluding="libmodbus/src|libmodbus/doc|libmodbus/tests" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="ThirdParty"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Hardware"/>
 						<entry excluding="Src/mqtt_client.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="App"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Core"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="OS_CONFIG"/>
+						<entry excluding="lib/libc/newlib_stub.c|connectivity/mqtt/MQTTClient-C/src/linux|connectivity/mqtt/MQTTClient-C/src/FreeRTOS|connectivity/mqtt/MQTTClient-C/src/cc3200|connectivity/mqtt/MQTTClient-C/samples|connectivity/mqtt/MQTTClient-C/test|connectivity/mqtt/MQTTPacket/samples|connectivity/mqtt/MQTTPacket/test|fs/spiffs|fs/ramfs|fs/fatfs|net/lwip/lwip-2.1.2/test|net/sal|connectivity/lwm2m|security|ota|net/lwip/lwip-2.1.2/doc|net/lwip/lwip-2.1.2/src/netif/zepif.c|net/lwip/lwip-2.1.2/src/netif/slipif.c|net/lwip/lwip-2.1.2/src/netif/lowpan6.c|net/lwip/lwip-2.1.2/src/netif/lowpan6_common.c|net/lwip/lwip-2.1.2/src/netif/lowpan6_ble.c|net/lwip/lwip-2.1.2/src/netif/bridgeif.c|net/lwip/lwip-2.1.2/src/netif/bridgeif_fdb.c|net/lwip/lwip-2.1.2/src/netif/ppp|net/lwip/lwip-2.1.2/src/apps|net/lwip/ppp_port|net/lwip/lwip-2.0.3|net/at_device|connectivity/nb_iot|connectivity/agent_tiny" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Components"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Drivers"/>
 					</sourceEntries>
 				</configuration>
@@ -170,11 +172,12 @@
 					</folderInfo>
 					<sourceEntries>
 						<entry excluding="LiteOS/arch/arm/arm-m/cortex-m3/keil|LiteOS/arch/arm/arm-m/cortex-m3/iar|LiteOS/arch/arm/arm-m/cortex-m7|LiteOS/arch/arm/arm-m/cortex-m4|LiteOS/arch/arm/arm-m/cortex-m0|LiteOS/kernel/base/mem/tlsf|LiteOS/kernel/base/mem/membox|LiteOS/kernel/base/mem/bestfit|LiteOS/examples|LiteOS/arch/arm/cortex-m/cortex-m3/keil|LiteOS/arch/arm/cortex-m/cortex-m3/iar|LiteOS/arch/arm/cortex-m/cortex-m7|LiteOS/arch/arm/cortex-m/cortex-m4|LiteOS/arch/arm/cortex-m/cortex-m0|LiteOS/arch/arm/cortex-a" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Middlewares"/>
-						<entry excluding="lib/libc/newlib_stub.c|connectivity/mqtt/MQTTClient-C/src/linux|connectivity/mqtt/MQTTClient-C/src/FreeRTOS|connectivity/mqtt/MQTTClient-C/src/cc3200|connectivity/mqtt/MQTTClient-C/samples|connectivity/mqtt/MQTTClient-C/test|connectivity/mqtt/MQTTPacket/samples|connectivity/mqtt/MQTTPacket/test|fs/spiffs|fs/ramfs|fs/kifs|fs/fatfs|net/lwip/lwip-2.1.2/test|net/sal|connectivity/lwm2m|security|ota|net/lwip/lwip-2.1.2/doc|net/lwip/lwip-2.1.2/src/netif/zepif.c|net/lwip/lwip-2.1.2/src/netif/slipif.c|net/lwip/lwip-2.1.2/src/netif/lowpan6.c|net/lwip/lwip-2.1.2/src/netif/lowpan6_common.c|net/lwip/lwip-2.1.2/src/netif/lowpan6_ble.c|net/lwip/lwip-2.1.2/src/netif/bridgeif.c|net/lwip/lwip-2.1.2/src/netif/bridgeif_fdb.c|net/lwip/lwip-2.1.2/src/netif/ppp|net/lwip/lwip-2.1.2/src/apps|net/lwip/ppp_port|net/lwip/lwip-2.0.3|net/at_device|connectivity/nb_iot|connectivity/agent_tiny" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Components"/>
+						<entry excluding="libmodbus/src|libmodbus/doc|libmodbus/tests" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="ThirdParty"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Hardware"/>
 						<entry excluding="Src/mqtt_client.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="App"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Core"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="OS_CONFIG"/>
+						<entry excluding="lib/libc/newlib_stub.c|connectivity/mqtt/MQTTClient-C/src/linux|connectivity/mqtt/MQTTClient-C/src/FreeRTOS|connectivity/mqtt/MQTTClient-C/src/cc3200|connectivity/mqtt/MQTTClient-C/samples|connectivity/mqtt/MQTTClient-C/test|connectivity/mqtt/MQTTPacket/samples|connectivity/mqtt/MQTTPacket/test|fs/spiffs|fs/ramfs|fs/fatfs|net/lwip/lwip-2.1.2/test|net/sal|connectivity/lwm2m|security|ota|net/lwip/lwip-2.1.2/doc|net/lwip/lwip-2.1.2/src/netif/zepif.c|net/lwip/lwip-2.1.2/src/netif/slipif.c|net/lwip/lwip-2.1.2/src/netif/lowpan6.c|net/lwip/lwip-2.1.2/src/netif/lowpan6_common.c|net/lwip/lwip-2.1.2/src/netif/lowpan6_ble.c|net/lwip/lwip-2.1.2/src/netif/bridgeif.c|net/lwip/lwip-2.1.2/src/netif/bridgeif_fdb.c|net/lwip/lwip-2.1.2/src/netif/ppp|net/lwip/lwip-2.1.2/src/apps|net/lwip/ppp_port|net/lwip/lwip-2.0.3|net/at_device|connectivity/nb_iot|connectivity/agent_tiny" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Components"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Drivers"/>
 					</sourceEntries>
 				</configuration>

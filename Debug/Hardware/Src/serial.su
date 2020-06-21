@@ -1,0 +1,6 @@
+serial.c:7:12:serial_open	24	static
+serial.c:14:12:serial_close	16	static
+serial.c:19:16:serial_read	32	static
+serial.c:28:16:serial_write	32	static
+serial.c:37:12:serial_ioctl	32	static
+serial.c:128:5:serial_init	8	static

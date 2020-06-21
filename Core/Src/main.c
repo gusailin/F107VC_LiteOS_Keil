@@ -31,9 +31,13 @@
 #include "ethernetif.h"
 
 #include "los_base.h"
+#include "los_devfs.h"
 #include "los_sys.h"
 #include "los_task.h"
 #include "los_typedef.h"
+#include "los_vfs.h"
+#include "serial.h"
+#include "sys/fcntl.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -67,30 +71,34 @@ extern void LwIP_init(void);
 /* USER CODE BEGIN 0 */
 void mainTask(void)
 {
-  LwIP_init();
+	uint8_t buf[3];
+    int fd;
+    LwIP_init();
 
-  for (;;)
-  {
-    LOS_TaskDelay(100);
-  }
+    fd = open("/dev/uart4", O_RDWR);
+    write(fd, "123", 3);
+    read(fd,  buf, 3);
+
+    for (;;) {
+        LOS_TaskDelay(100);
+    }
 }
 
 UINT32 createMainTask(void)
 {
-  UINT32 uwRet = LOS_OK;
-  TSK_INIT_PARAM_S task;
+    UINT32 uwRet = LOS_OK;
+    TSK_INIT_PARAM_S task;
 
-  task.usTaskPrio = 1;
-  task.pcName = "main_task";
-  task.pfnTaskEntry = (TSK_ENTRY_FUNC)mainTask;
-  task.uwStackSize = 1024;
+    task.usTaskPrio = 1;
+    task.pcName = "main_task";
+    task.pfnTaskEntry = (TSK_ENTRY_FUNC)mainTask;
+    task.uwStackSize = 1024;
 
-  uwRet = LOS_TaskCreate(&g_uwMainTaskID, &task);
-  if (LOS_OK != uwRet)
-  {
+    uwRet = LOS_TaskCreate(&g_uwMainTaskID, &task);
+    if (LOS_OK != uwRet) {
+        return uwRet;
+    }
     return uwRet;
-  }
-  return uwRet;
 }
 /* USER CODE END 0 */
 
@@ -101,7 +109,7 @@ UINT32 createMainTask(void)
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-  UINT32 uwRet = LOS_OK;
+    UINT32 uwRet = LOS_OK;
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -126,24 +134,30 @@ int main(void)
   MX_CAN2_Init();
   MX_UART4_Init();
   /* USER CODE BEGIN 2 */
-  uwRet = LOS_KernelInit();
-  if (LOS_OK != uwRet)
-  {
-    return LOS_NOK;
-  }
+    uwRet = LOS_KernelInit();
+    if (LOS_OK != uwRet) {
+        return LOS_NOK;
+    }
 
-  (void)createMainTask();
-  (void)LOS_Start();
+    los_vfs_init();
+
+    uwRet = los_devfs_init();
+    if (LOS_OK != uwRet) {
+        return LOS_NOK;
+    }
+
+    serial_init();
+    (void)createMainTask();
+    (void)LOS_Start();
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  while (1)
-  {
+    while (1) {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-  }
+    }
   /* USER CODE END 3 */
 }
 
@@ -204,7 +218,7 @@ void SystemClock_Config(void)
 void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
-  /* User can add his own implementation to report the HAL error return state */
+    /* User can add his own implementation to report the HAL error return state */
 
   /* USER CODE END Error_Handler_Debug */
 }
@@ -220,7 +234,7 @@ void Error_Handler(void)
 void assert_failed(uint8_t *file, uint32_t line)
 { 
   /* USER CODE BEGIN 6 */
-  /* User can add his own implementation to report the file name and line number,
+    /* User can add his own implementation to report the file name and line number,
      tex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
   /* USER CODE END 6 */
 }

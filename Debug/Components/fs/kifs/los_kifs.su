@@ -1,0 +1,14 @@
+los_kifs.c:68:26:kifs_file_find	40	static
+los_kifs.c:135:12:kifs_open	32	static
+los_kifs.c:175:12:kifs_close	24	static
+los_kifs.c:197:16:kifs_read	32	static
+los_kifs.c:225:16:kifs_write	32	static
+los_kifs.c:253:12:kifs_ioctl	32	static
+los_kifs.c:273:12:kifs_opendir	24	static
+los_kifs.c:298:12:kifs_readdir	32	static
+los_kifs.c:341:12:kifs_closedir	16	static
+los_kifs.c:372:26:kifs_file_creat	48	static
+los_kifs.c:457:5:los_kifs_create	32	static
+los_kifs.c:480:5:los_kifs_link	32	static
+los_kifs.c:504:7:los_kifs_mount	24	static
+los_kifs.c:544:5:los_kifs_init	8	static
